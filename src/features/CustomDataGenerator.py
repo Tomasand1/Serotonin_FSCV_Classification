@@ -19,10 +19,6 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
 
         self.n = len(self.X)
 
-    # def on_epoch_end(self):
-    #     if self.shuffle:
-    #         self.df = self.X.sample(frac=1).reset_index(drop=True)
-
     def __getitem__(self, index):
         batch_images = self.X[index *
                               self.batch_size: (index + 1) * self.batch_size]
@@ -37,6 +33,15 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
         return self.n // self.batch_size
 
     def __augment_data(self, X, y):
+        """ Augment data by combining two images with the same labels. The images are first multiplied by a random number and than added.
+
+        Args:
+        X (list): dataset
+        y (list): labels
+
+        Returns:
+        lists: augmented dataset and labels
+        """
         filtered_data_1 = X[np.nonzero(y == 1)[0]]
         filtered_data_0 = X[np.nonzero(y == 0)[0]]
 

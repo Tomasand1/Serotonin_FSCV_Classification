@@ -6,6 +6,14 @@ from tensorflow.keras import layers
 
 
 def build_cnn(version):
+    """Build sequential model
+
+    Args:
+        version (stirng): version
+
+    Returns:
+        any: model
+    """
     net = Sequential()
     net.add(Conv2D(activation='relu', filters=64,
             kernel_size=(5, 5), input_shape=(200, 50, 1)))
@@ -32,6 +40,16 @@ def build_cnn(version):
 
 
 def build_func_cnn(version, input_shape=(200, 50, 1), num_classes=3):
+    """Build functional model
+
+    Args:
+        version (string): version
+        input_shape (tuple, optional): input shape. Defaults to (200, 50, 1).
+        num_classes (int, optional): number of classes. Defaults to 3.
+
+    Returns:
+        any: model
+    """
     inputs = keras.Input(shape=input_shape)
 
     x = layers.Conv2D(32, 3, strides=2, padding="same")(inputs)

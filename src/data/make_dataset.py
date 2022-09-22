@@ -6,8 +6,13 @@ import tensorflow as tf
 
 
 def normalise(data_path):
+    """Normalise data
+
+    Args:
+        data_path (string): path containing data
+    """
+
     directory = data_path
-    # imagine you're one directory above test dir
     all_files = os.listdir(directory)
     txt_files = list(filter(lambda x: x[-4:] == '.txt', all_files))
     CVs = []
@@ -26,8 +31,13 @@ def normalise(data_path):
 
 
 def read_txt(filepath, output_filepath):
+    """Read txt files and save as np data
+
+    Args:
+        filepath (string): path containing txt files
+        output_filepath (string): path for output data
+    """
     directory = filepath
-    # imagine you're one directory above test dir
     all_files = os.listdir(directory)
     txt_files = list(filter(lambda x: x[-4:] == '.txt', all_files))
     CVs = []
@@ -51,13 +61,31 @@ def read_txt(filepath, output_filepath):
 
 
 def make_dataset(data, labels):
+    """Combine data and labels into one structure
+
+    Args:
+        data (list): dataset
+        labels (list): labels
+
+    Returns:
+        array: combined dataset
+    """
     dataset = [data, labels]
 
     return dataset
 
 
 def shuffle_dataset(data, labels, length):
-    # Shuffle data
+    """Shuffle the dataset
+
+    Args:
+        data (list): dataset
+        labels (list): labels
+        length (number): length of data
+
+    Returns:
+        list, list: shuffled data
+    """
     shuffler = np.random.permutation(length)
     X = data[shuffler]
     y = labels[shuffler]

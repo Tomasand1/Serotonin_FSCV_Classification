@@ -3,7 +3,17 @@ import numpy as np
 
 
 def get_dataset_partitions(data, labels, val_split=0.2, test_split=0.1):
-    # Use a utility from sklearn to split and shuffle your dataset.
+    """Split data into training, validation and test sets
+
+    Args:
+        data (list): data
+        labels (list): labels
+        val_split (float, optional): fraction of data to use for validation set. Defaults to 0.2.
+        test_split (float, optional): fraction of data to use for test set. Defaults to 0.1.
+
+    Returns:
+        list: Split data sets
+    """
 
     train_ds, test_ds, train_labels, test_labels = train_test_split(
         data, labels, test_size=0.1)

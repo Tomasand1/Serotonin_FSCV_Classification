@@ -4,6 +4,12 @@ from tensorflow.keras.utils import plot_model
 
 
 def save_network_structure(net, version):
+    """Save network structure as png
+
+    Args:
+        net (any): neural network model
+        version (string): version
+    """
     summary = net.summary()
     model_path = create_folder('../reports/'+version+"/train/")
     model_name = 'network_structure.png'

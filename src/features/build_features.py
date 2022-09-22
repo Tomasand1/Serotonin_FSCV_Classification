@@ -5,6 +5,16 @@ from sklearn.preprocessing import MultiLabelBinarizer
 
 
 def generate_class_weights(class_series, multi_class=True, one_hot_encoded=False):
+    """Generate class weights
+
+    Args:
+        class_series (list): labels
+        multi_class (bool, optional): use multi-class. Defaults to True.
+        one_hot_encoded (bool, optional): use one hot encoded. Defaults to False.
+
+    Returns:
+        dict: labels and weights for each label
+    """
     if multi_class:
         # If class is one hot encoded, transform to categorical labels to use compute_class_weight
         if one_hot_encoded:
@@ -41,6 +51,16 @@ def generate_class_weights(class_series, multi_class=True, one_hot_encoded=False
 
 
 def generate_class_weights_multiclass(class_series, multi_class=True, one_hot_encoded=False):
+    """Generate class weights
+
+    Args:
+        class_series (list): labels
+        multi_class (bool, optional): use multi-class. Defaults to True.
+        one_hot_encoded (bool, optional): use one hot encoded. Defaults to False.
+
+    Returns:
+        dict: labels and weights for each label
+    """
     if multi_class:
         # If class is one hot encoded, transform to categorical labels to use compute_class_weight
         if one_hot_encoded:

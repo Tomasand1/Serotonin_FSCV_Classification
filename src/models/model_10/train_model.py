@@ -34,6 +34,12 @@ def load_data():
 
 
 def train(version, cross_val=True):
+    """ Set up for training of the model
+
+    Args:
+        version (string): version
+        cross_val (bool, optional): Preform cross validation. Defaults to True.
+    """
     data, labels = load_data()
 
     data, labels = shuffle_dataset(data, labels, len(labels))
@@ -74,6 +80,19 @@ def train(version, cross_val=True):
 
 
 def train_model(train_ds, train_labels, val_ds, val_labels, class_weights, model_path, file_name, version):
+    """ Train NN model
+
+    Args:
+        train_ds (list):  training dataset
+        train_labels (list): training labels
+        val_ds (list): validation dataset
+        val_labels (list): validation labels
+        class_weights (list): class weights
+        model_path (string): model path
+        file_name (string): file name for trained model
+        version (string): version
+    """
+
     net = build_func_cnn(version)
     train_labels = np.asarray(train_labels).astype('float32').reshape((-1, 1))
 

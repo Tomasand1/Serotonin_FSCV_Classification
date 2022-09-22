@@ -1,10 +1,34 @@
-SerotoninLevelDetection
-==============================
+# SerotoninLevelDetection
 
-Development of Neural Networks to distinguish between serotonin relase and non-release.
+Development of Neural Networks to classify FSCV serotonin data.
 
-Project Organization
-------------
+## Installation
+
+To run the application, navigate to the `/src` folder.
+
+To create an environment and install the dependencies required for the project, use:
+
+```bash
+make create_environment
+
+conda activate SerotoninLevelDetection
+
+make requirements
+```
+
+If the dependencies fail to install for any reason, they can be installed manually.
+
+## Usage
+
+Once the dependencies are installed, use the following script to run the application locally:
+
+```
+python .
+```
+
+The application will run in the command line. The simple interface is provided.
+
+## Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
@@ -19,9 +43,7 @@ Project Organization
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          <- Jupyter notebooks. (Used for testing and statistical analysis)
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -51,7 +73,19 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
+---
 
---------
+## Authors
+
+```
+Author: Tomas Andriuskevicius
+Supervisor: Dr. Parastoo Hashemi, Sergio Mena, and Melissa Hexter
+
+MSc Project, Imperial College London, 2022
+```
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>

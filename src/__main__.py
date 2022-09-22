@@ -11,14 +11,10 @@ def main():
 
     cli_init()
 
-    # model_path = os.path.join(
-    #     ROOT_DIR, '../models/4.0/version_4.0_best_model_fold-1.h5')
-    # test(model_path)
-
 
 def cli_init():
     print("Serotonin Level Detection")
-    print("Select function: ")
+    print("Select function (e.g. Train): ")
     print(" - Train")
     print(" - Predict")
 
@@ -44,11 +40,11 @@ def cli_init():
             train_model_CV(select_version(), cross_val)
         else:
             print("Invalid input")
-    elif function_input.lower() == "test":
+    elif function_input.lower() == "predict":
         print("Selected function: Predict")
         print("Enter data type (select number): ")
         print("1. 10 second colour plots")
-        print("2. second colour plots")
+        print("2. 5 second colour plots")
         print("3. CVs")
         training_type = input("")
         if training_type == "1":

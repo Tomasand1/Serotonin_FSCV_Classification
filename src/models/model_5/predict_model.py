@@ -24,6 +24,12 @@ def natural_keys(text):
 
 
 def predict_model(model, directory):
+    """ Predict new data using NN model
+
+    Args:
+        model (any): model
+        directory (string): path to save the results
+    """
     # imagine you're one directory above test dir
     all_files = sorted(os.listdir(directory), key=natural_keys)
     print(all_files)
@@ -58,7 +64,6 @@ def predict_model(model, directory):
 
 
 def write_to_csv(data):
-    print(data)
     np.savetxt('../reports/results/model_5/comparison_data_5s.csv',
                np.char.strip(data), delimiter=",", fmt="%s")
 

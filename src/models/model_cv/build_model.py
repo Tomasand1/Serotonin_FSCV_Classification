@@ -5,6 +5,11 @@ from helper.save_network_structure import save_network_structure
 
 
 def build_model():
+    """ Build sequential model
+
+    Returns:
+            any: model
+    """
     net = Sequential()
     net.add(GaussianNoise(0.5))
     net.add(Dense(200, activation='relu',

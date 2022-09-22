@@ -22,6 +22,12 @@ def natural_keys(text):
 
 
 def predict_model(model, directory):
+    """ Predict new data using NN model
+
+    Args:
+        model (any): model
+        directory (string): path to save the results
+    """
     # imagine you're one directory above test dir
     all_files = sorted(os.listdir(directory), key=natural_keys)
     print(all_files)
@@ -35,10 +41,6 @@ def predict_model(model, directory):
         CVs.append(np.transpose(matrix))
     CVs = np.array(CVs).reshape(372, 200, 100, 1)
     print(CVs.shape)
-
-    # plt.figure()
-    # plt.imshow(CVs[1])
-    # plt.show()
 
     net = load_model(model)
 

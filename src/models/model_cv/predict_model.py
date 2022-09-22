@@ -24,6 +24,12 @@ def natural_keys(text):
 
 
 def predict_model(model, directory):
+    """ Predict new data using NN model
+
+    Args:
+        model (any): model
+        directory (string): path to save the results
+    """
     # imagine you're one directory above test dir
     all_files = sorted(os.listdir(directory), key=natural_keys)
     print(all_files)

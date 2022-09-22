@@ -7,6 +7,13 @@ def test_model(model, data, labels):
 
 
 def test_accuracy(model, data, labels):
+    """Test model accuracy
+
+    Args:
+        model (any): model
+        data (list): data
+        labels (list): labels
+    """
     net = load_model(model)
     pred = net.predict(data)
 
