@@ -1,4 +1,4 @@
-# SerotoninLevelDetection
+# Serotonin FSCV classification
 
 Development of Neural Networks to classify FSCV serotonin data.
 
