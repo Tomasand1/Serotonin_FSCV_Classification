@@ -17,7 +17,11 @@ from models.model_5.test_model import test_model
 
 
 def load_data():
-    # Load colorplot datasets.
+    """Load data
+
+    Returns:
+        lists: data and labels
+    """
     data_path = os.path.join(
         ROOT_DIR, '../data/processed/data_5/data.npz')
     label_path = os.path.join(
@@ -45,6 +49,8 @@ def train(version, cross_val=True):
 
     data, labels = shuffle_dataset(data, labels, len(labels))
 
+    # If cross validation is needed, use 5-fold cross validation.
+    #  Otherwise, split data into training, validation and test sets.
     if cross_val:
         kfold = KFold(n_splits=5, shuffle=True)
 
@@ -97,6 +103,7 @@ def train_model(train_ds, train_labels, val_ds, val_labels, class_weights, model
     net = build_func_cnn(version)
     train_labels = np.asarray(train_labels).astype('float32').reshape((-1, 1))
 
+    # Define optimizer
     opt = tf.keras.optimizers.Adam(
         learning_rate=1e-06,
         beta_1=0.9,
@@ -109,6 +116,7 @@ def train_model(train_ds, train_labels, val_ds, val_labels, class_weights, model
     file_path = os.path.join(
         model_path, file_name)
 
+    # Define early stopping
     es = [EarlyStopping(monitor='val_loss', mode='min', patience=25, min_delta=0.01), tf.keras.callbacks.ModelCheckpoint(
         file_path,
         monitor="val_loss",
@@ -120,6 +128,7 @@ def train_model(train_ds, train_labels, val_ds, val_labels, class_weights, model
     net.compile(loss='sparse_categorical_crossentropy',
                 optimizer=opt, metrics="accuracy")
 
+    # Initialize data generator
     train_loader = CustomDataGenerator(
         train_ds, train_labels, 64, (10356, 200, 50, 1))
     valid_loader = CustomDataGenerator(

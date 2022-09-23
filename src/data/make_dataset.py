@@ -6,7 +6,7 @@ import tensorflow as tf
 
 
 def normalise(data_path):
-    """Normalise data
+    """Normalize data set and save it to txt files
 
     Args:
         data_path (string): path containing data

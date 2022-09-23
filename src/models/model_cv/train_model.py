@@ -52,8 +52,8 @@ def train(version, cross_val=True):
     normalizer.adapt(data)
     normalizer(data)
 
-    pass
-
+    # If cross validation is needed, use 5-fold cross validation.
+    #  Otherwise, split data into training, validation and test sets.
     if cross_val:
         kfold = KFold(n_splits=5, shuffle=True)
 
@@ -113,6 +113,7 @@ def train_model(train_ds, train_labels, val_ds, val_labels, class_weights, model
     file_path = os.path.join(
         model_path, file_name)
 
+    # Define early stopping
     es = [EarlyStopping(monitor='val_loss', mode='min', patience=25, min_delta=0.001), tf.keras.callbacks.ModelCheckpoint(
         file_path,
         monitor="val_loss",

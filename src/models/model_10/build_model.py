@@ -62,6 +62,7 @@ def build_func_cnn(version, input_shape=(200, 100, 1), num_classes=2):
 
     previous_block_activation = x  # Set aside residual
 
+    # Create multiple sets of layers of different sizes
     for size in [128, 256, 512, 728]:
         x = layers.Activation("relu")(x)
         x = layers.Conv2D(size, 3, padding="same")(x)

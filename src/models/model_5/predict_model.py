@@ -35,6 +35,8 @@ def predict_model(model, directory):
     print(all_files)
     txt_files = list(filter(lambda x: x[-4:] == '.txt', all_files))
     CVs = []
+
+    # Read data
     for file in txt_files:
         matrix = open(directory+"/"+file).read()
         matrix = np.array([item.split()
@@ -47,9 +49,11 @@ def predict_model(model, directory):
     np.savez_compressed(
         '../data/external/comparison_dataset/5s/data.npz', a=np.array(CVs))
 
+    # Load model and predict the data
     net = load_model(model)
     pred = net.predict(CVs)
 
+    # Compare true labels to predicted ones
     print(pred.shape)
     print(pred)
     indices = np.argmax(pred, axis=1)
@@ -64,10 +68,23 @@ def predict_model(model, directory):
 
 
 def write_to_csv(data):
+    """Write predicted data to csv
+
+    Args:
+        data (list): data to be stored
+    """
     np.savetxt('../reports/results/model_5/comparison_data_5s.csv',
                np.char.strip(data), delimiter=",", fmt="%s")
 
 
 def normalize_data(data):
+    """Normalize data
+
+    Args:
+        data (list): data to be normalized
+
+    Returns:
+        list: normalized data
+    """
     normalized = (data - data.mean())/(data.std())
     return normalized

@@ -48,6 +48,7 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
         augmented_release = []
         augmented_non_release = []
 
+        # Multiply two images with the same label by a random number and add them together
         for i in range(0, len(filtered_data_1)-1):
             random_number = random.uniform(0.35, 0.65)
             random_res = 1 - random_number
@@ -59,6 +60,7 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
 
         augmented_release = np.array(augmented_release)
 
+        # Multiply two images with the same label by a random number and add them together
         for i in range(0, len(filtered_data_0)-1):
             random_number = random.uniform(0.35, 0.65)
             random_res = 1 - random_number
@@ -68,20 +70,23 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
 
         augmented_non_release = np.array(augmented_non_release)
 
+        # Create labels for augmented data
         augmented_labels_release = np.reshape(
             np.ones(len(augmented_release)), (len(augmented_release), 1))
         augmented_labels_non_release = np.reshape(
             np.zeros(len(augmented_non_release)), (len(augmented_non_release), 1))
 
+        # Combine augmented data and labels with original ones
         final_augmented = np.concatenate(
             (augmented_release, augmented_non_release))
-        # print(final_augmented.shape)
+
         final_augmented_labels = np.concatenate(
             (augmented_labels_release, augmented_labels_non_release))
 
         final = np.concatenate((X, final_augmented))
         final_labels = np.concatenate((y, final_augmented_labels))
 
+        # Shuffle the data
         p = np.random.permutation(len(final))
         final_shuffled = final[p]
         final_shuffled_labels = final_labels[p]

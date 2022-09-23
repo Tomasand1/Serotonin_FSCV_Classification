@@ -33,6 +33,8 @@ def predict_model(model, directory):
     print(all_files)
     txt_files = list(filter(lambda x: x[-4:] == '.txt', all_files))
     CVs = []
+
+    # Read data set
     for file in txt_files:
         matrix = open(directory+"/"+file).read()
         matrix = np.array([item.split()
@@ -46,6 +48,7 @@ def predict_model(model, directory):
 
     pred = net.predict(CVs)
 
+    # Produce the results and write to csv
     indices = pred > 0.5
     indices = indices.astype(np.int8).flatten()
     print(indices)
@@ -56,5 +59,10 @@ def predict_model(model, directory):
 
 
 def write_to_csv(data):
+    """Write to csv
+
+    Args:
+        data (list): data
+    """
     np.savetxt('../reports/results/model_10/comparison_data_10s.csv',
                data, delimiter=",", fmt="%10s")

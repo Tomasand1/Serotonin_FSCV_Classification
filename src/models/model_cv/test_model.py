@@ -33,7 +33,7 @@ def test_accuracy(model, data, labels):
 
 
 def test_model_plot(model):
-    """ Test model using plots
+    """ Test model using plots. Plot CVs and predicted probability of labels.
 
     Args:
         model (any): model
