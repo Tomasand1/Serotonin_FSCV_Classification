@@ -3,6 +3,11 @@ from matplotlib import pyplot as plt
 
 
 def plot_loss(history):
+    """ Plot accuracy and loss graphs of trained model
+
+    Args:
+        history (any): history of trained model
+    """
     plt.figure(1)
     plt.plot(history.history['loss'], label='loss')
     plt.plot(history.history['val_loss'], label='val_loss')

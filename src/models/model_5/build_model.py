@@ -62,6 +62,7 @@ def build_func_cnn(version, input_shape=(200, 50, 1), num_classes=3):
 
     previous_block_activation = x  # Set aside residual
 
+    # Create multiple sets of layers of different sizes
     for size in [128, 256, 512, 728]:
         x = layers.Activation("relu")(x)
         x = layers.Conv2D(size, 3, padding="same")(x)
@@ -90,6 +91,8 @@ def build_func_cnn(version, input_shape=(200, 50, 1), num_classes=3):
 
     # x = layers.GlobalAveragePooling2D()(x)
     x = layers.Flatten()(x)
+
+    # Choose activation function based on number of different labels
     if num_classes == 2:
         activation = "sigmoid"
         units = 1

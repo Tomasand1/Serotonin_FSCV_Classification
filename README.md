@@ -4,9 +4,7 @@ Development of Neural Networks to classify FSCV serotonin data.
 
 ## Installation
 
-To run the application, navigate to the `/src` folder.
-
-To create an environment and install the dependencies required for the project, use:
+To create an environment and install the dependencies required for the project, navigate to base folder and use:
 
 ```bash
 make create_environment
@@ -16,9 +14,11 @@ conda activate SerotoninLevelDetection
 make requirements
 ```
 
-If the dependencies fail to install for any reason, they can be installed manually.
+If the dependencies fail to install automatically for any reason, the missing ones will be displayed and can be installed manually.
 
 ## Usage
+
+To run the application, navigate to the `/src` folder.
 
 Once the dependencies are installed, use the following script to run the application locally:
 
@@ -27,6 +27,13 @@ python .
 ```
 
 The application will run in the command line. The simple interface is provided.
+
+CLI steps:
+
+1. Select the function: Train or Predict. (Type the word)
+2. Select the model (Type an option number)
+3. For training, select whether cross validation in required (Type an option number)
+4. Enter the version
 
 ## Project Organization
 
@@ -48,6 +55,8 @@ The application will run in the command line. The simple interface is provided.
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   ├── reports
+    │   ├── results        <- Model prediction results
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
@@ -58,14 +67,19 @@ The application will run in the command line. The simple interface is provided.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
     │   ├── data           <- Scripts to download or generate data
+    │   │   ├── partition_dataset.py
     │   │   └── make_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
+    │   │   ├── CustomDataGenerator.py
+    │   │   ├── CustomDataGenerator_5s.py
     │   │   └── build_features.py
     │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
+    │   ├── models         <- Scripts to build, train and test models and then use trained models to make
     │   │   │                 predictions
     │   │   ├── predict_model.py
+    │   │   ├── test_model.py
+    │   │   ├── build_model.py
     │   │   └── train_model.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations

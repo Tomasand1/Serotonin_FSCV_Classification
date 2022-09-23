@@ -13,6 +13,8 @@ def main():
 
 
 def cli_init():
+    """ Command line interface initialization.
+    """
     print("Serotonin Level Detection")
     print("Select function (e.g. Train): ")
     print(" - Train")
@@ -23,7 +25,7 @@ def cli_init():
         print("Selected function: Train")
         print("Enter data type (select number): ")
         print("1. 10 second colour plots")
-        print("2. second colour plots (Disabled)")
+        print("2. 5 second colour plots (Disabled)")
         print("3. CVs")
         training_type = input("")
         if training_type == "1":
